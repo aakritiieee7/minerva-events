@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Events | Minerva Forums</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="main-header">
+<h1>Minerva Forums Events</h1>
+<p class="subtitle">Discover, register, and relive our community’s best moments.</p>
+</header>
+
+<main>
+<section id="upcoming">
+<h2 class="section-title">Upcoming Events</h2>
+<div class="events-grid">
+<div class="event-card">
+<img src="images/google.jpg">
+<div class="event-info">
+<h3>Internships with Tech Giants : Google Edition</h3>
+<p class="event-date">June 15, 2025</p>
+<div class="event-desc">
+<p> Insights and experiences from IGDTUW students interning at Google</p>
+<p><strong>Guests:</strong> Ms.Aditi Gupta, Ms.Rishita Makde</p>
+</div>
+<button class="event-btn register-btn" onclick="openModal('Internships with Tech Giants : Google Edition')">Register</button>
+</div>
+</div>
+<div class="event-card">
+<img src="images/academics.jpg">
+<div class="event-info">
+<h3>Mastering Academic Excellence</h3>
+<p class="event-date">July 10, 2025</p>
+<div class="event-desc">
+<p>Strategies and Insights from 10/10 SGPA achievers</p>
+<p><strong>Guests:</strong> Ms. Priyanka Loura, Ms. Neetika Goel</p>
+</div>
+<button class="event-btn register-btn" onclick="openModal('Mastering Academic Excellence')">Register</button>
+</div>
+</div>
+<!-- Add more upcoming event cards as needed -->
+</div>
+</section>
+
+<section id="past">
+<h2 class="section-title">Past Events</h2>
+<div class="events-grid">
+<div class="event-card">
+<img src="images/research.png" >
+<div class="event-info">
+<h3>Research Alchemy – CMU Intern Shares Secrets</h3>
+<p class="event-date">May 5, 2024</p>
+<div class="event-desc">
+<p>A session where a Carnegie Mellon University intern shared her research experience and guidance.</p>
+<p><strong>Guests:</strong> Prof. R. Singh, Ms. Isha Rao</p>
+</div>
+
+</div>
+</div>
+<!-- Add more past event cards as needed -->
+</div>
+</section>
+</main>
+
+<!-- Registration Modal -->
+<div id="registerModal" class="modal">
+<div class="modal-content">
+<span class="close-btn" id="closeModalBtn">&times;</span>
+<h2 id="modalTitle">Register</h2>
+<form id="registerForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
+
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone" name="phone" />
+
+  <button type="submit" class="event-btn">Submit</button>
+</form>
+
+<div id="thankYouMessage" style="display:none; margin-top: 20px;">
+<strong>Thank you for registering! We'll contact you soon.</strong>
+</div>
+</div>
+</div>
+
+<footer>
+<p>&copy; 2025 Minerva Forums. All rights reserved.</p>
+</footer>
+<script>
+function openModal(eventName) {
+  document.getElementById('registerModal').style.display = 'flex';
+  document.getElementById('modalTitle').textContent = `Register for ${eventName}`;
+  document.getElementById('eventName').value = eventName;
+  document.getElementById('registerForm').style.display = 'block';
+  document.getElementById('thankYouMessage').style.display = 'none';
+  document.getElementById('closeModalBtn').focus();
+}
+function closeModal() {
+  document.getElementById('registerModal').style.display = 'none';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('closeModalBtn').onclick = closeModal;
+  document.getElementById('closeModalBtn').onkeydown = function(e) {
+    if (e.key === "Enter" || e.key === " " || e.key === "Escape") closeModal();
+  };
+  document.getElementById('registerModal').onclick = function(event) {
+    if (event.target === this) closeModal();
+  };
+  document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('thankYouMessage').style.display = 'block';
+  });
+  // Optional: Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") closeModal();
+  });
+});
+function openModal(eventName) {
+document.getElementById('registerModal').style.display = 'flex';
+document.getElementById('modalTitle').textContent = `Register for ${eventName}`;
+document.getElementById('eventName').value = eventName;
+document.getElementById('registerForm').style.display = 'block';
+document.getElementById('thankYouMessage').style.display = 'none';
+}
+
+function closeModal() {
+document.getElementById('registerModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+const modal = document.getElementById('registerModal');
+if (event.target === modal) {
+closeModal();
+}
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+e.preventDefault();
+this.style.display = 'none';
+document.getElementById('thankYouMessage').style.display = 'block';
+});
+});
+
+</script>
+</body>
+<!-- Registration Modal -->
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModalBtn" tabindex="0" aria-label="Close">&times;</span>
+    <h2 id="modalTitle">Register</h2>
+    <form id="registerForm">
+      <input type="hidden" id="eventName" name="eventName" />
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" />
+      <button type="submit" class="event-btn">Submit</button>
+    </form>
+    <div id="thankYouMessage" style="display:none; margin-top: 20px;">
+      <strong>Thank you for registering! We'll contact you soon.</strong>
+    </div>
+  </div>
+</div>
+
+</html>
+
+</body>
+</html>
